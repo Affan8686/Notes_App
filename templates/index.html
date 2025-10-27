@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Notes App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>📝 Simple Notes App</h1>
+
+        <div class="form">
+            <input type="text" id="title" placeholder="Note Title">
+            <textarea id="content" placeholder="Write your note..."></textarea>
+            <button onclick="addNote()">Add Note</button>
+        </div>
+
+        <div id="notes-container"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

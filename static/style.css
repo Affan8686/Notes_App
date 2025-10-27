@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8fafc;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.container {
+    width: 600px;
+}
+
+h1 {
+    text-align: center;
+    color: #007bff;
+}
+
+.form {
+    margin-bottom: 20px;
+}
+
+input, textarea {
+    width: 100%;
+    margin: 5px 0;
+    padding: 8px;
+}
+
+button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.note {
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px #ccc;
+    margin-bottom: 10px;
+}
