@@ -5,9 +5,16 @@ function loadNotes() {
     fetch("/notes")
         .then(response => response.json())
         .then(data => {
-            const container = document.getElementById("notes-container");
-            container.innerHTML = "";
-            data.forEach(note => {
+            // Get both columns
+            const left = document.getElementById("left-column");
+            const right = document.getElementById("right-column");
+
+            // Clear old notes
+            left.innerHTML = "";
+            right.innerHTML = "";
+
+            // Add notes alternately to left and right columns
+            data.forEach((note, index) => {
                 const div = document.createElement("div");
                 div.className = "note";
                 div.innerHTML = `
@@ -15,12 +22,19 @@ function loadNotes() {
                     <p>${note.content}</p>
                     <small>${note.created_at}</small><br>
                     <button onclick="deleteNote(${note.id})">Delete</button>
-                    <button onclick="editNote(${note.id}, '${note.title}', '${note.content}')">Edit</button>
+                    <button onclick="editNote(${note.id}, '${note.title.replace(/'/g, "\\'")}', '${note.content.replace(/'/g, "\\'")}')">Edit</button>
                 `;
-                container.appendChild(div);
+
+                // Alternate placement
+                if (index % 2 === 0) {
+                    left.appendChild(div);
+                } else {
+                    right.appendChild(div);
+                }
             });
         });
 }
+
 
 function addNote() {
     const title = document.getElementById("title").value;

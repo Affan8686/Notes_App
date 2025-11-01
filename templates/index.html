@@ -7,16 +7,19 @@
 </head>
 <body>
 
-    <div class="container">
-        <h1>📝 Simple Notes App</h1>
+    <div class="main-container">
+        <h1>📝 Notes Keeper</h1>
 
-        <div class="form">
+        <div class="note-input">
             <input type="text" id="title" placeholder="Note Title">
-            <textarea id="content" placeholder="Write your note..."></textarea>
+            <textarea id="content" placeholder="Write your note here..."></textarea>
             <button onclick="addNote()">Add Note</button>
         </div>
 
-        <div id="notes-container"></div>
+        <div class="notes-wrapper">
+            <div id="left-column" class="note-column"></div>
+            <div id="right-column" class="note-column"></div>
+        </div>
     </div>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>

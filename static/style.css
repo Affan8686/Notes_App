@@ -1,44 +1,140 @@
+/* ---------- Base Layout ---------- */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f8fafc;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #eef2f3, #d9e4f5);
     color: #333;
     display: flex;
     justify-content: center;
-    margin: 20px;
+    min-height: 100vh;
 }
 
-.container {
-    width: 600px;
+
+.main-container {
+    width: 90%;
+    max-width: 1100px;
+    margin-top: 40px;
 }
 
+/* ---------- Title ---------- */
 h1 {
     text-align: center;
-    color: #007bff;
+    color: #0077ff;
+    font-weight: 600;
+    margin-bottom: 30px;
 }
 
-.form {
-    margin-bottom: 20px;
+/* ---------- Input Section ---------- */
+.note-input {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
 }
 
-input, textarea {
+.note-input input,
+.note-input textarea {
     width: 100%;
-    margin: 5px 0;
-    padding: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
 }
 
-button {
-    background: #007bff;
+.note-input button {
+    background: #0077ff;
     color: white;
     border: none;
-    padding: 8px 12px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 15px;
     cursor: pointer;
-    border-radius: 5px;
+    transition: background 0.2s ease;
 }
 
+.note-input button:hover {
+    background: #005ecb;
+}
+
+/* ---------- Notes Layout ---------- */
+.notes-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.note-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ---------- Note Card ---------- */
 .note {
     background: white;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 0 5px #ccc;
+    padding: 15px 18px;
+    border-radius: 15px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    word-wrap: break-word;
+}
+
+.note:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.note h3 {
+    color: #0077ff;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+.note p {
+    font-size: 15px;
+    color: #444;
     margin-bottom: 10px;
+}
+
+.note small {
+    font-size: 12px;
+    color: #666;
+}
+
+/* ---------- Buttons ---------- */
+.note button {
+    border: none;
+    border-radius: 5px;
+    padding: 6px 10px;
+    font-size: 13px;
+    cursor: pointer;
+    margin-right: 6px;
+    transition: all 0.2s;
+}
+
+.note button:nth-child(1) {
+    background-color: #ff4b4b;
+    color: white;
+}
+
+.note button:nth-child(1):hover {
+    background-color: #e03939;
+}
+
+.note button:nth-child(2) {
+    background-color: #00c853;
+    color: white;
+}
+
+.note button:nth-child(2):hover {
+    background-color: #00a843;
+}
+
+/* ---------- Responsive ---------- */
+@media screen and (max-width: 768px) {
+    .notes-wrapper {
+        grid-template-columns: 1fr;
+    }
 }

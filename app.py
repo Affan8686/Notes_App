@@ -31,7 +31,7 @@ def index():
 def get_notes():
     conn = sqlite3.connect('notes.db')
     c = conn.cursor()
-    c.execute("SELECT * FROM notes ORDER BY id DESC")
+    c.execute("SELECT * FROM notes ORDER BY id ASC")
     notes = [
         {"id": row[0], "title": row[1], "content": row[2], "created_at": row[3]}
         for row in c.fetchall()
