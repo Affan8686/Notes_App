@@ -35,6 +35,34 @@ function loadNotes() {
         });
 }
 
+function searchNotes() {
+    const query = document.getElementById("searchInput").value;
+
+    fetch(`/search?q=${encodeURIComponent(query)}`)
+        .then(response => response.json())
+        .then(data => {
+            const left = document.getElementById("left-column");
+            const right = document.getElementById("right-column");
+            left.innerHTML = "";
+            right.innerHTML = "";
+
+            data.forEach((note, index) => {
+                const div = document.createElement("div");
+                div.className = "note";
+                div.innerHTML = `
+                    <h3>${note.title}</h3>
+                    <p>${note.content}</p>
+                    <small>${note.created_at}</small><br>
+                    <button onclick="deleteNote(${note.id})">Delete</button>
+                    <button onclick="editNote(${note.id}, '${note.title.replace(/'/g, "\\'")}', '${note.content.replace(/'/g, "\\'")}')">Edit</button>
+                `;
+
+                if (index % 2 === 0) left.appendChild(div);
+                else right.appendChild(div);
+            });
+        });
+}
+
 
 function addNote() {
     const title = document.getElementById("title").value;

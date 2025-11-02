@@ -80,5 +80,27 @@ def delete_note(note_id):
     return jsonify({"message": "Note deleted"})
 
 
+@app.route('/search', methods=['GET'])
+def search_notes():
+    query = request.args.get('q', '').strip().lower()
+
+    conn = sqlite3.connect('notes.db')
+    c = conn.cursor()
+
+    if query:
+        c.execute("SELECT * FROM notes WHERE LOWER(title) LIKE ? OR LOWER(content) LIKE ? ORDER BY id DESC",
+                  (f'%{query}%', f'%{query}%'))
+    else:
+        c.execute("SELECT * FROM notes ORDER BY id DESC")
+
+    notes = [
+        {"id": row[0], "title": row[1], "content": row[2], "created_at": row[3]}
+        for row in c.fetchall()
+    ]
+    conn.close()
+    return jsonify(notes)
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)

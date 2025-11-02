@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-
+    
     <div class="main-container">
         <h1>📝 Notes Keeper</h1>
 
@@ -14,6 +14,15 @@
             <input type="text" id="title" placeholder="Note Title">
             <textarea id="content" placeholder="Write your note here..."></textarea>
             <button onclick="addNote()">Add Note</button>
+        </div>
+
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="🔍 Search notes..." onkeyup="searchNotes()">
+        </div>
+
+        <div class="notes-wrapper">
+            <div id="left-column" class="note-column"></div>
+            <div id="right-column" class="note-column"></div>
         </div>
 
         <div class="notes-wrapper">
